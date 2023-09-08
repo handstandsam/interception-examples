@@ -1,0 +1,30 @@
+plugins {
+  alias(libs.plugins.android.library)
+  alias(libs.plugins.kotlin.android)
+}
+
+android {
+  namespace 'com.handstandsam.interception.examples.okhttp'
+  compileSdk libs.versions.android.compile.sdk.get().toInteger()
+  defaultConfig {
+    minSdkVersion libs.versions.android.min.sdk.get().toInteger()
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_17
+    targetCompatibility JavaVersion.VERSION_17
+  }
+}
+
+dependencies {
+  api libs.kotlin.coroutines.core
+
+  implementation libs.okhttp
+  implementation libs.picnic
+
+  androidTestImplementation libs.androidx.test.core
+  androidTestImplementation libs.androidx.test.runner
+  androidTestImplementation libs.kotlin.coroutines.test
+  androidTestImplementation libs.truth
+}
